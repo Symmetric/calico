@@ -9,4 +9,9 @@ set -e
 
 coverage erase
 tox "$@"
+
+# Make sure we run the following coverage html command with the recent
+# coverage.
+source .tox/py27/bin/activate
 coverage html
+deactivate
