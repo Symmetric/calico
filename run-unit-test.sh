@@ -8,6 +8,12 @@
 set -e
 
 coverage erase
+
+if [ -n "$VIRTUAL_ENV" ]; then
+  echo "run-unit-test.sh cannot be run from within a virtualenv"
+  exit 1
+fi
+
 tox "$@"
 
 # Make sure we run the following coverage html command with the recent
